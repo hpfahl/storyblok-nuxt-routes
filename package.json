@@ -1,0 +1,33 @@
+{
+  "name": "storyblok-nuxt-routes",
+  "version": "0.1.0",
+  "description": "Uses Storyblok Links API to provide an array of dynamic routes for nuxt generate",
+  "main": "./lib/index.js",
+  "repository": "hpfahl/storyblok-nuxt-routes",
+  "author": "Heiko Pfahl <hpfahl@gmail.com> (https://github.com/hpfahl)",
+  "license": "MIT",
+  "keywords": [
+    "storyblok",
+    "nuxt",
+    "generate"
+  ],
+  "devDependencies": {
+    "eslint": "^5.9.0",
+    "jest": "^23.6.0"
+  },
+  "files": [
+    "lib/*",
+    "LICENSE",
+    "README.md"
+  ],
+  "engines": {
+    "node": ">= 8"
+  },
+  "scripts": {
+    "test": "npm run lint && jest",
+    "lint": "eslint lib test"
+  },
+  "dependencies": {
+    "axios": "^0.18.0"
+  }
+}

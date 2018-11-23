@@ -1,0 +1,10 @@
+root: true
+env:
+  es6: true
+  node: true
+parserOptions:
+  ecmaVersion: 2017
+rules:
+  indent: ["error", 2, { "SwitchCase": 1 }]
+  quotes: ["error", "single"]
+  space-in-parens: ["error", "never"]
