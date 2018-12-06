@@ -1,6 +1,6 @@
 {
   "name": "storyblok-nuxt-routes",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Uses Storyblok Links API to provide an array of dynamic routes for nuxt generate",
   "main": "./lib/index.js",
   "repository": "hpfahl/storyblok-nuxt-routes",
