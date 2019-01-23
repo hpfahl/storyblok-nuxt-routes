@@ -30,6 +30,10 @@ Get Storyblok routes with the given `options`.
 
 Your access token. This token allows you to access your content and can be generated in the Storyblok dashboard at app.storyblok.com.
 
+##### languages
+
+Your languages. If you have multilanguage content and use field level translations provide your languages here.
+
 ## Usage
 
 `nuxt.config.js`
@@ -41,7 +45,8 @@ export default {
   generate: {
     subFolders: false,
     routes: getStoryblokRoutes({
-      accessToken: '<YOUR_ACCESS_TOKEN>'
+      accessToken: '<YOUR_ACCESS_TOKEN>',
+      languages: ['de', 'en']
     })
   }
 }
