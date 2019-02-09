@@ -34,6 +34,10 @@ Your access token. This token allows you to access your content and can be gener
 
 Your languages. If you have multilanguage content and use field level translations provide your languages here.
 
+##### endpoint
+
+Your custom Storyblok endpoint.
+
 ## Usage
 
 `nuxt.config.js`
