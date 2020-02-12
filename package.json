@@ -1,6 +1,6 @@
 {
   "name": "storyblok-nuxt-routes",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": " Uses the Storyblok JS client to get all stories and add them as routes for nuxt generate.",
   "main": "./lib/module.js",
   "repository": "hpfahl/storyblok-nuxt-routes",
