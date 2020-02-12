@@ -1,66 +1,74 @@
 # storyblok-nuxt-routes
- Uses the [Storyblok Links API](https://www.storyblok.com/docs/Delivery-Api/Links) to get all links and add them as routes for `nuxt generate`.
+> Uses the [Storyblok JS Client](https://github.com/storyblok/storyblok-js-client) to get all stories and add them as routes for `nuxt generate`.
 
 [![NPM Version](https://img.shields.io/npm/v/storyblok-nuxt-routes.svg)](https://www.npmjs.com/package/storyblok-nuxt-routes) [![NPM Downloads](https://img.shields.io/npm/dt/storyblok-nuxt-routes.svg)](https://www.npmjs.com/package/storyblok-nuxt-routes) [![GitHub license](https://img.shields.io/github/license/hpfahl/storyblok-nuxt-routes.svg)](https://github.com/hpfahl/storyblok-nuxt-routes/blob/master/LICENSE)
 
-## Installation
+## Setup
 
-This is a [Node.js](https://nodejs.org/en/) module available through the [npm registry](https://www.npmjs.com/).
-Installation is done using the [`npm install`](https://docs.npmjs.com/getting-started/installing-npm-packages-locally) command:
+- Add `storyblok-nuxt-routes` dev dependency using yarn or npm to your project
+- Add `storyblok-nuxt-routes` to `buildModules` section of `nuxt.config.js`
 
-```sh
-$ npm install storyblok-nuxt-routes
+```js
+{
+  buildModules: [
+    ['storyblok-nuxt-routes', {
+      accessToken: 'YOUR_ACCESS_TOKEN',
+      defaultLanguage: 'YOUR_DEFAULT_LANGUAGE', // optional
+      contentTypes: 'YOUR_CONTENT_TYPES_NUXT_SHOULD_GENERATE_ROUTES_FOR' // optional
+    }],
+  ]
+}
 ```
 
-## API
+### Options
 
-```javascript
-const getStoryblokRoutes = require('storyblok-nuxt-routes')
-```
+#### `accessToken`
 
-### getStoryblokRoutes(options)
+Your access token.
 
-Get Storyblok routes with the given `options`.
+#### `defaultLanguage`
 
-#### Options
+Your default language code.
 
-`storyblok-nuxt-routes` accepts these properties in the options object.
+#### `contentTypes`
 
-##### accessToken
-
-Your access token. This token allows you to access your content and can be generated in the Storyblok dashboard at app.storyblok.com.
-
-##### languages
-
-Your languages. If you have multilanguage content and use field level translations provide your languages here.
-
-##### endpoint
-
-Your custom Storyblok endpoint.
+Your content types nuxt should generate routes for.
 
 ## Usage
 
-`nuxt.config.js`
+### nuxt.config.js
 
 ```javascript
-const getStoryblokRoutes = require('storyblok-nuxt-routes')
-
 export default {
-  generate: {
-    subFolders: false,
-    routes: getStoryblokRoutes({
+  buildModules: [
+    ['storyblok-nuxt-routes', {
       accessToken: '<YOUR_ACCESS_TOKEN>',
-      languages: ['de', 'en']
-    })
+      defaultLanguage: 'en',
+      contentTypes: 'page,news'    
+    }]
+  ],
+  generate: {
+    fallback: true,
+    interval: 100
   }
 }
 ```
 
-## Todo
+### Now we can access the payload inside pages/_.vue like so:
 
-- [ ] Testing
-- [ ] more more more?
+```javascript
+async asyncData ({ route, payload, app }) {
+  if (payload) {
+    return { story: payload }
+  } else {
+    const res = await app.$storyapi.get(`cdn/stories${route.path}`)
+    return res.data
+  }
+}
+```
 
 ## License
 
-[MIT](LICENSE)
+[MIT License](./LICENSE)
+
+Copyright (c) Heiko Pfahl <hpfahl@gmail.com>
