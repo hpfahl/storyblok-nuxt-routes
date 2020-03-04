@@ -5,7 +5,8 @@ const StoryblokClient = require('../lib/Storyblok')
 const moduleOptions = {
   accessToken: 'XHWCNQHaH0jB9o0nQaHmlwtt',
   defaultLanguage: 'en',
-  contentTypes: 'page'
+  contentTypes: 'page',
+  resolveLinks: 'url'
 }
 
 const Storyblok = new StoryblokClient(moduleOptions)
@@ -36,6 +37,12 @@ describe('getAllStories function', () => {
   test('getAllStories() should return all stories and all translations', async () => {
     const result = await Storyblok.getAllStories()
     expect(result.length).toBe(2)
+  })
+
+  test('if resolveLinks=url, getAllStories() should provide story for links', async () => {
+    const result = await Storyblok.getAllStories()
+    expect(result.length).toBe(2)
+    expect(result[0].content.link.story).toBeDefined()
   })
 })
 

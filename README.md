@@ -14,7 +14,8 @@
     ['storyblok-nuxt-routes', {
       accessToken: 'YOUR_ACCESS_TOKEN',
       defaultLanguage: 'YOUR_DEFAULT_LANGUAGE', // optional
-      contentTypes: 'YOUR_CONTENT_TYPES_NUXT_SHOULD_GENERATE_ROUTES_FOR' // optional
+      contentTypes: 'YOUR_CONTENT_TYPES_NUXT_SHOULD_GENERATE_ROUTES_FOR', // optional
+      resolveLinks: 'url' // optional
     }],
   ]
 }
@@ -30,9 +31,17 @@ Your access token.
 
 Your default language code.
 
+Optional. If you have multiple languages, set defaultLanguage to the key of your Storyblok default language.
+
 #### `contentTypes`
 
 Your content types nuxt should generate routes for.
+
+#### `resolveLinks`
+
+The parameter resolveLinks will automatically resolve internal links of the multilink field type.
+If the value is `story` the whole story object will be included.
+If the value is `url` only uuid, id, name, path, slug, full_slug and url will be included.
 
 ## Usage
 
@@ -44,7 +53,8 @@ export default {
     ['storyblok-nuxt-routes', {
       accessToken: '<YOUR_ACCESS_TOKEN>',
       defaultLanguage: 'en',
-      contentTypes: 'page,news'    
+      contentTypes: 'page,news',
+      resolveLinks: 'url'  
     }]
   ],
   generate: {
