@@ -15,7 +15,8 @@
       accessToken: 'YOUR_ACCESS_TOKEN',
       defaultLanguage: 'YOUR_DEFAULT_LANGUAGE', // optional
       contentTypes: 'YOUR_CONTENT_TYPES_NUXT_SHOULD_GENERATE_ROUTES_FOR', // optional
-      resolveLinks: 'url' // optional
+      resolveLinks: 'url', // optional
+      resolveRelations: 'page.author' // optional
     }],
   ]
 }
@@ -43,6 +44,11 @@ The parameter resolveLinks will automatically resolve internal links of the mult
 If the value is `story` the whole story object will be included.
 If the value is `url` only uuid, id, name, path, slug, full_slug and url will be included.
 
+#### `resolveRelations`
+
+The parameter resolveRelations will automatically resolve relationships to other Stories of a multi-option or single-option field-type.
+Provide the component name and the field key as comma separated string. The limit of resolved relationships is 100 Stories. Example: resolveRelations: 'page.author,page.categories'
+
 ## Usage
 
 ### nuxt.config.js
@@ -54,7 +60,8 @@ export default {
       accessToken: '<YOUR_ACCESS_TOKEN>',
       defaultLanguage: 'en',
       contentTypes: 'page,news',
-      resolveLinks: 'url'  
+      resolveLinks: 'url',
+      resolveRelations: 'page.author'  
     }]
   ],
   generate: {
