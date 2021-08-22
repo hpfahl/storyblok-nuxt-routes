@@ -17,7 +17,8 @@
       contentTypes: 'YOUR_CONTENT_TYPES_NUXT_SHOULD_GENERATE_ROUTES_FOR', // optional
       resolveLinks: 'url', // optional
       resolveRelations: 'page.author', // optional
-      exclude: [] // optional
+      exclude: [], // optional
+      routeRealPath: true // optional
     }],
   ]
 }
@@ -54,6 +55,15 @@ Provide the component name and the field key as comma separated string. The limi
 
 It accepts an array of string and will prevent generation of routes matching them.
 
+#### `routeRealPath`
+
+Boolean, default `false`
+
+If `true`, Nuxt routes will be generated using the Stories `Real Path` configuration, instead of the default path.
+This can be useful for example to generate a Story with path of `/` instead of `/home`.
+
+See https://www.storyblok.com/cl/real-path-added-to-content-delivery-api
+
 ## Usage
 
 ### nuxt.config.js
@@ -67,7 +77,8 @@ export default {
       contentTypes: 'page,news',
       resolveLinks: 'url',
       resolveRelations: 'page.author',
-      exclude: [ '^\/admin' ] 
+      exclude: [ '^\/admin' ] ,
+      routeRealPath: true
     }]
   ],
   generate: {
