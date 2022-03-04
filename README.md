@@ -18,7 +18,8 @@
       resolveLinks: 'url', // optional
       resolveRelations: 'page.author', // optional
       exclude: [], // optional
-      routeRealPath: true // optional
+      routeRealPath: true, // optional
+      excludingFields: 'title,content' // optional
     }],
   ]
 }
@@ -63,6 +64,10 @@ If `true`, Nuxt routes will be generated using the Stories `Real Path` configura
 This can be useful for example to generate a Story with path of `/` instead of `/home`.
 
 See https://www.storyblok.com/cl/real-path-added-to-content-delivery-api
+
+#### `excludingFields`
+
+Exclude specific fields of your content type by comma seperated names. Example: excluding_fields=title,content
 
 ## Usage
 
